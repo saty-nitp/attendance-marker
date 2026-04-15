@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>AttendTrack — College Attendance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="app">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">
+      <div class="logo-mark">A</div>
+      <div>
+        <h1>AttendTrack</h1>
+        <span>college attendance system</span>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="showSection('subjects',this)">Subjects</button>
+      <button class="tab" onclick="showSection('calendar',this)">Calendar</button>
+      <button class="tab" onclick="showSection('overview',this)">Overview</button>
+    </div>
+  </div>
+
+  <!-- SUBJECTS SECTION -->
+  <div id="sec-subjects" class="section active">
+    <div id="subjects-grid" class="subjects-grid"></div>
+    <div class="add-subject-form">
+      <div class="field">
+        <label>Subject Name</label>
+        <input id="inp-name" type="text" placeholder="e.g. Data Structures" maxlength="40"
+          onkeydown="if(event.key==='Enter') addSubject()"/>
+      </div>
+      <div class="field code-field">
+        <label>Short Code</label>
+        <input id="inp-code" type="text" placeholder="e.g. DS" maxlength="8"
+          onkeydown="if(event.key==='Enter') addSubject()"/>
+      </div>
+      <div class="field color-field">
+        <label>Color</label>
+        <div class="color-picker" id="color-picker"></div>
+      </div>
+      <button class="btn btn-primary" onclick="addSubject()">+ Add Subject</button>
+    </div>
+  </div>
+
+  <!-- CALENDAR SECTION -->
+  <div id="sec-calendar" class="section">
+    <div class="calendar-wrap">
+      <div class="cal-left">
+        <div class="cal-header">
+          <span class="cal-month" id="cal-month-label"></span>
+          <div class="cal-nav">
+            <button onclick="changeMonth(-1)">&#8249;</button>
+            <button onclick="changeMonth(1)">&#8250;</button>
+          </div>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+      </div>
+      <div class="cal-right">
+        <div class="mark-panel">
+          <h3>Mark Attendance</h3>
+          <div class="selected-date" id="selected-date-label">Select a date</div>
+          <div id="mark-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW SECTION -->
+  <div id="sec-overview" class="section">
+    <div id="overview-list" class="overview-list"></div>
+  </div>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>
